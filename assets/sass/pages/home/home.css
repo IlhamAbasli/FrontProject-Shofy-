@@ -6,6 +6,14 @@
   font-family: Jost;
   src: url(../../../fonts/Jost-VariableFont_wght.ttf);
 }
+@font-face {
+  font-family: Oregano;
+  src: url(../../../fonts/Oregano-Regular.ttf);
+}
+@font-face {
+  font-family: RobotoBold;
+  src: url(../../../fonts/Roboto-Bold.ttf);
+}
 .container-main {
   width: 68%;
   margin: 0 auto;
@@ -13,6 +21,7 @@
 
 body {
   font-family: Roboto;
+  height: 200vh;
 }
 
 #header-top {
@@ -317,8 +326,10 @@ body {
 
 #header-bottom {
   border-top: 1px solid rgba(1, 15, 28, 0.1019607843);
-  position: relative;
   height: 51px;
+}
+#header-bottom .nav {
+  position: relative;
 }
 #header-bottom .all-categories {
   position: relative;
@@ -357,6 +368,9 @@ body {
 }
 #header-bottom .all-categories .categories ul li {
   padding: 13px 30px 12px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #EAEBED;
 }
 #header-bottom .all-categories .categories ul li img {
@@ -366,19 +380,26 @@ body {
      object-fit: contain;
 }
 #header-bottom .all-categories .categories ul li a {
+  transition: 0.5s;
   text-decoration: none;
   color: #55585b;
   font-size: 15px;
 }
 #header-bottom .all-categories .categories ul li i {
+  transition: 0.5s;
   color: #010F1C;
-  font-size: 14px;
+  font-size: 12px;
+}
+#header-bottom .all-categories .categories ul li:hover a {
+  color: #0989FF;
+}
+#header-bottom .all-categories .categories ul li:hover i {
+  color: #0989FF;
 }
 #header-bottom .navbar {
   height: 51px;
   display: flex;
   align-items: center;
-  position: relative;
 }
 #header-bottom .navbar ul {
   display: flex;
@@ -403,8 +424,7 @@ body {
   padding-left: 5px;
 }
 #header-bottom .submenu {
-  width: 1300px;
-  box-shadow: 0 20px 30px rgba(1, 15, 28, 0.1019607843);
+  width: 100%;
   position: absolute;
   z-index: 6;
   padding: 25px 40px 0;
@@ -419,6 +439,7 @@ body {
   padding: 0;
   margin: 0;
   flex-direction: column;
+  line-height: 34px;
 }
 #header-bottom .submenu ul li {
   padding: 0;
@@ -429,6 +450,35 @@ body {
   font-size: 14px;
   color: #55585b;
   padding: 3px 0;
+  transition: 0.5s;
+}
+#header-bottom .submenu ul li a:hover {
+  color: #0989FF;
+}
+#header-bottom .submenu-show {
+  animation: open-submenu 1s;
+  transform-origin: top;
+  display: block;
+}
+#header-bottom .submenu-close {
+  animation: close-submenu 1s;
+  transform-origin: top;
+}
+@keyframes open-submenu {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes close-submenu {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
 }
 #header-bottom .contact {
   height: 51px;
@@ -455,4 +505,137 @@ body {
 }
 #header-bottom .contact a:hover {
   color: #0989FF;
+}
+
+#slider-area {
+  background-color: #115061;
+  height: 516px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#slider-area .content-area {
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#slider-area .content-area span {
+  font-size: 16px;
+}
+#slider-area .content-area h1 {
+  font-size: 56px;
+  font-family: RobotoBold;
+  line-height: 1.07;
+  width: 526px;
+  font-weight: 900;
+}
+#slider-area .content-area p {
+  font-family: Oregano;
+  position: relative;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+#slider-area .content-area p span {
+  font-size: 28px;
+  color: #FFD43A;
+}
+#slider-area .content-area p img {
+  left: 115px;
+  bottom: -15px;
+  position: absolute;
+}
+#slider-area .content-area a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  width: 145px;
+  height: 46px;
+  border-radius: 6px;
+  background-color: white;
+  text-decoration: none;
+  color: #010F1C;
+  border: 1px solid white;
+  padding: 9px 29px;
+  transition: 0.5s;
+  font-size: 14px;
+}
+#slider-area .content-area a img {
+  position: relative;
+  padding-left: 4px;
+}
+#slider-area .content-area a:hover {
+  background: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+#slider-area .content-area a:hover img {
+  filter: invert(100%);
+}
+#slider-area .third p span {
+  color: #FD4B6B;
+}
+#slider-area .third a:hover {
+  background: #0989FF;
+  color: white;
+  border-color: #0989FF;
+}
+#slider-area .third a:hover img {
+  filter: invert(100%);
+}
+#slider-area .image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+#slider-area .image img {
+  position: relative;
+  z-index: 2;
+}
+#slider-area img {
+  position: absolute;
+}
+#slider-area .shape1 {
+  top: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0.1;
+  mix-blend-mode: luminosity;
+}
+#slider-area .shape2 {
+  top: 8%;
+  right: 33%;
+}
+#slider-area .shape3 {
+  top: 30%;
+  left: 6%;
+}
+#slider-area .controllers a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(1, 15, 28, 0.1019607843);
+  border-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: white;
+  transform: translateY(-50%);
+  position: absolute;
+}
+#slider-area .controllers .left {
+  left: 40px;
+  top: 50%;
+}
+#slider-area .controllers .right {
+  right: 40px;
+  top: 50%;
+}
+#slider-area:hover .controllers .left {
+  animation: left 1s;
+}
+#slider-area:hover .controllers .right {
+  animation: right 1s;
 }/*# sourceMappingURL=home.css.map */
