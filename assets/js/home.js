@@ -104,6 +104,18 @@ $(function () {
 
   //#endregion
   
+
+  $(".bars").click(function(e){
+    e.preventDefault();
+    $(".right-side-menu").addClass("opened");
+    $(".right-side-menu").removeClass("closed");
+  })
+
+  $(".close").click(function(e){
+    e.preventDefault();
+    $(".right-side-menu").removeClass("opened");
+    $(".right-side-menu").addClass("closed");
+  })
   
   
   
