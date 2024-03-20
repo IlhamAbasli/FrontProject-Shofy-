@@ -105,6 +105,7 @@ $(function () {
   //#endregion
   
 
+  //#region sidebar
   $(".bars").click(function(e){
     e.preventDefault();
     $(".right-side-menu").addClass("opened");
@@ -116,6 +117,241 @@ $(function () {
     $(".right-side-menu").removeClass("opened");
     $(".right-side-menu").addClass("closed");
   })
+  
+  //#endregion
+
+
+  //#region product-tabmenu
+
+  $("#products .tab-categories .new-products").click(function(e){
+    e.preventDefault();
+    $(this).addClass("active");
+    $("#products .tab-categories .featured-products").removeClass("active");
+    $("#products .tab-categories .top-products").removeClass("active");
+    $("#products .new-products-list").removeClass("d-none");
+    $("#products .featured-products-list").addClass("d-none");
+    $("#products .top-products-list").addClass("d-none");
+  })
+
+
+  $("#products .tab-categories .featured-products").click(function(e){
+    e.preventDefault();
+    $(this).addClass("active");
+    $("#products .tab-categories .new-products").removeClass("active");
+    $("#products .tab-categories .top-products").removeClass("active");
+    $("#products .new-products-list").addClass("d-none");
+    $("#products .featured-products-list").removeClass("d-none");
+    $("#products .top-products-list").addClass("d-none");
+  })
+
+
+  $("#products .tab-categories .top-products").click(function(e){
+    e.preventDefault();
+    $(this).addClass("active");
+    $("#products .tab-categories .featured-products").removeClass("active");
+    $("#products .tab-categories .new-products").removeClass("active");
+    $("#products .new-products-list").addClass("d-none");
+    $("#products .featured-products-list").addClass("d-none");
+    $("#products .top-products-list").removeClass("d-none");
+  })
+
+
+  //#endregion
+  
+
+
+  //#region add-to-cart
+  
+  let products = [];
+  let wishlist = []
+
+  if(JSON.parse(localStorage.getItem("products")) == null){
+    localStorage.setItem("products",JSON.stringify(products));
+  }else{
+    products = JSON.parse(localStorage.getItem("products"));
+  }
+
+
+  if(JSON.parse(localStorage.getItem("wishlist")) == null){
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+  }else{
+    wishlist = JSON.parse(localStorage.getItem("wishlist"));
+  }
+
+
+  function getBasketCount(products) {
+    let count = 0;
+    if(products.length != 0){
+      for (const product of products) {
+        count += product.count;
+      }
+    }
+
+    $("#header-mid .actions .cart-count").html(count);
+  }
+
+  function getWishlistCount(products) {
+    let count = 0;
+    if(wishlist.length != 0){
+      for (const product of products) {
+        count++;
+      }
+    }
+
+    $("#header-mid .actions .wishlist-count").html(count);
+  }
+
+  function checkWishlist(wishlist){
+    let products = $(".product");
+    for (const product of products) {
+      for (const item of wishlist) {
+        if(product.getAttribute("data-id") == item.id){
+          product.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.lastElementChild.firstElementChild.setAttribute("class","add-to-wishlist active-wishlist");
+        }
+      }
+    }
+  }
+
+  checkWishlist(wishlist)
+  getBasketCount(products); 
+  getWishlistCount(wishlist);
+
+  $("#products .product .product-action .add-to-cart").click(function(e){
+    e.preventDefault();
+    let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
+    let productImage = $(this).parent().parent().parent().prev().attr("src");
+    let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
+    let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
+
+
+    if($(this).parent().parent().parent().parent().parent().hasClass("out-of-stock")){
+      toastr["error"](`${productName} out of stock`)
+      toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      return;
+    }
+
+
+    let existProduct = products.find(m => m.id == parseInt(productId))
+    
+    if(existProduct != undefined){
+      existProduct.count++;
+    }else{
+      products.push({
+        id: parseInt(productId),
+        image: productImage,
+        name: productName,
+        price: parseFloat(productPrice),
+        count: 1
+      })
+    }
+
+    localStorage.setItem("products",JSON.stringify(products));
+
+    toastr["success"](`${productName} added to cart`)
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+
+    getBasketCount(products);
+  })
+
+  $("#products .product .product-action .add-to-wishlist").click(function(e){
+    e.preventDefault();
+    let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
+    let productImage = $(this).parent().parent().parent().prev().attr("src");
+    let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
+    let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
+
+    let existProduct = wishlist.find(m => m.id == parseInt(productId))
+    
+    if(existProduct != undefined){
+      toastr["error"](`${productName} remove to wishlist`)
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    return;
+    }else{
+      wishlist.push({
+        id: parseInt(productId),
+        image: productImage,
+        name: productName,
+        price: parseFloat(productPrice),
+        count: 1
+      })
+      $(this).addClass("active-wishlist");
+    }
+    
+    
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+
+    toastr["success"](`${productName} added to wishlist`)
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+
+    getWishlistCount(wishlist);
+  })
+
+
+  //#endregion
   
   
   

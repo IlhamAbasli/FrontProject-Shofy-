@@ -1110,14 +1110,34 @@ body{
         .image{
             width: 100%;
             position: relative;
+            z-index: 5;
+            overflow: hidden;
             img{
                 width: 100%;
                 transition: 0.5s;
             }
 
+            .out-stock{
+                position: absolute;
+                top: 16px;
+                right: 20px;
+                span{
+                    padding: 4px 8px 2px;
+                    font-size: 14px;
+                    background-color: #FD2D6C;
+                    border-radius: 4px;
+                    font-family: RobotoBold;
+                    color: white;
+                }
+            }
+
             .product-action{
                 position: absolute;
-                right: 20px;
+                right: -20px;
+                transition: all .3s 0s ease-out;
+                opacity: 0;
+                z-index: 1;
+                visibility: hidden;
                 bottom: 25px;
                 ul{
                     list-style: none;
@@ -1130,14 +1150,84 @@ body{
                             align-items: center;
                             box-shadow: 0 1px 3px #010f1c24;
                             background-color: white;
+                            transition: 0.5s;
+                            position: relative;
                             img{
                                 width: auto;
+                            }
+
+                            .tooltip-text{
+                                position: absolute;
+                                visibility: hidden;
+                                opacity: 0;
+                                width: max-content;
+                                font-size: 12px;
+                                background-color: black;
+                                color: #fff;
+                                text-align: center;
+                                border-radius: 4px;
+                                padding: 4px 6px;
+                                z-index: 1;
+                                top: 50%;
+                                right: 100%;
+                                line-height: 1;
+                                transform: translateY(-50%);
+                                transition: opacity .3s ease, visibility .3s ease, transform .3s cubic-bezier(.71,1.7,.77,1.24);
+
+                                &::after{
+                                    content: " ";
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 100%;
+                                    margin-top: -5px;
+                                    border-width: 5px;
+                                    border-style: solid;
+                                    border-color: transparent transparent transparent black;
+                                }
+                            }
+
+                            &:hover{
+                                background-color: #0989FF;
+                                img{
+                                    filter: invert(100%);
+                                }
+
+                                .tooltip-text{
+                                    visibility: visible;
+                                    opacity: 1;
+                                    transform: translate(-8px) translateY(-50%);
+                                }
+                            }
+                        }
+
+                        .active-wishlist{
+                            background-color: #0989FF;
+                            img{
+                                filter: invert(100%);
+                            }
+                        }
+
+                        &:nth-child(2){
+                            a{
+                                &:hover{
+                                    background-color: #010F1C;
+                                    img{
+                                        filter: invert(0);
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
 
+            &:hover{
+                .product-action{
+                    right: 20px;
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
 
         }
 
