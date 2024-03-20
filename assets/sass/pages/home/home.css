@@ -21,6 +21,7 @@
 
 body {
   font-family: Roboto;
+  height: 500vh;
 }
 
 #header-top {
@@ -1009,29 +1010,30 @@ body {
 #products .tab-categories ul li .active img {
   display: block;
 }
-#products .product {
+
+.product {
   width: 100%;
   background-color: white;
   border: 1px solid #EAEBED;
   border-radius: 8px;
   transition: 0.5s;
 }
-#products .product .image {
+.product .image {
   width: 100%;
   position: relative;
   z-index: 5;
   overflow: hidden;
 }
-#products .product .image img {
+.product .image img {
   width: 100%;
   transition: 0.5s;
 }
-#products .product .image .out-stock {
+.product .image .out-stock {
   position: absolute;
   top: 16px;
   right: 20px;
 }
-#products .product .image .out-stock span {
+.product .image .out-stock span {
   padding: 4px 8px 2px;
   font-size: 14px;
   background-color: #FD2D6C;
@@ -1039,7 +1041,7 @@ body {
   font-family: RobotoBold;
   color: white;
 }
-#products .product .image .product-action {
+.product .image .product-action {
   position: absolute;
   right: -20px;
   transition: all 0.3s 0s ease-out;
@@ -1048,10 +1050,10 @@ body {
   visibility: hidden;
   bottom: 25px;
 }
-#products .product .image .product-action ul {
+.product .image .product-action ul {
   list-style: none;
 }
-#products .product .image .product-action ul li a {
+.product .image .product-action ul li a {
   width: 40px;
   height: 40px;
   display: flex;
@@ -1062,10 +1064,10 @@ body {
   transition: 0.5s;
   position: relative;
 }
-#products .product .image .product-action ul li a img {
+.product .image .product-action ul li a img {
   width: auto;
 }
-#products .product .image .product-action ul li a .tooltip-text {
+.product .image .product-action ul li a .tooltip-text {
   position: absolute;
   visibility: hidden;
   opacity: 0;
@@ -1084,7 +1086,7 @@ body {
   transform: translateY(-50%);
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
 }
-#products .product .image .product-action ul li a .tooltip-text::after {
+.product .image .product-action ul li a .tooltip-text::after {
   content: " ";
   position: absolute;
   top: 50%;
@@ -1094,83 +1096,331 @@ body {
   border-style: solid;
   border-color: transparent transparent transparent black;
 }
-#products .product .image .product-action ul li a:hover {
+.product .image .product-action ul li a:hover {
   background-color: #0989FF;
 }
-#products .product .image .product-action ul li a:hover img {
+.product .image .product-action ul li a:hover img {
   filter: invert(100%);
 }
-#products .product .image .product-action ul li a:hover .tooltip-text {
+.product .image .product-action ul li a:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
   transform: translate(-8px) translateY(-50%);
 }
-#products .product .image .product-action ul li .active-wishlist {
+.product .image .product-action ul li .active-wishlist {
   background-color: #0989FF;
 }
-#products .product .image .product-action ul li .active-wishlist img {
+.product .image .product-action ul li .active-wishlist img {
   filter: invert(100%);
 }
-#products .product .image .product-action ul li:nth-child(2) a:hover {
+.product .image .product-action ul li:nth-child(2) a:hover {
   background-color: #010F1C;
 }
-#products .product .image .product-action ul li:nth-child(2) a:hover img {
+.product .image .product-action ul li:nth-child(2) a:hover img {
   filter: invert(0);
 }
-#products .product .image:hover .product-action {
+.product .image:hover .product-action {
   right: 20px;
   visibility: visible;
   opacity: 1;
 }
-#products .product .content {
+.product .content {
   border-top: 1px solid #EAEBED;
   padding: 10px 30px 20px;
   display: flex;
   flex-direction: column;
 }
-#products .product .content a {
+.product .content a {
   text-decoration: none;
 }
-#products .product .content .card-product-category {
+.product .content .card-product-category {
   font-size: 12px;
   color: #55585b;
   padding-bottom: 3px;
 }
-#products .product .content .product-name {
+.product .content .product-name {
   font-size: 15px;
   font-family: RobotoBold;
   color: #010F1C;
   padding-bottom: 7px;
 }
-#products .product .content .user-ratings i {
+.product .content .user-ratings i {
   font-size: 13px;
   color: #FFB21D;
 }
-#products .product .content .user-ratings span {
+.product .content .user-ratings span {
   font-size: 12px;
   color: #55585b;
 }
-#products .product .content .price {
+.product .content .price {
   padding-top: 7px;
 }
-#products .product .content .price .old-price {
+.product .content .price .old-price {
   font-size: 12px;
   color: #55585b;
   text-decoration: line-through;
 }
-#products .product .content .price .new-price {
+.product .content .price .new-price {
   font-size: 15px;
   color: #0989FF;
   font-family: RobotoBold;
 }
-#products .product:hover {
+.product:hover {
   box-shadow: 0 4px 10px rgba(1, 15, 28, 0.1411764706);
 }
-#products .product:hover .image img {
+.product:hover .image img {
   transform: scale(1.1);
 }
-#products .product:hover .product-action img {
+.product:hover .product-action img {
   transform: none;
+}
+
+#banner {
+  padding-top: 55px;
+  padding-bottom: 70px;
+}
+#banner .left-banner {
+  width: 100%;
+  min-height: 260px;
+  position: relative;
+  padding: 52px 60px 32px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+#banner .left-banner .banner-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3s 0s ease-out;
+}
+#banner .left-banner:hover .banner-cover {
+  transform: scale(1.05);
+}
+#banner .left-banner .banner-content {
+  display: flex;
+  flex-direction: column;
+}
+#banner .left-banner .banner-content span {
+  margin-bottom: 5px;
+}
+#banner .left-banner .banner-content a {
+  font-size: 28px;
+  font-family: RobotoBold;
+  color: #010F1C;
+  text-decoration: none;
+  margin-bottom: 22px;
+  transition: all 0.3s 0s ease-out;
+}
+#banner .left-banner .banner-content a:hover {
+  color: #0989FF;
+}
+#banner .left-banner .banner-content .button {
+  font-size: 13px;
+  font-family: Roboto;
+  font-weight: 600;
+}
+#banner .left-banner .banner-content .button img {
+  width: 13px;
+  height: 13px;
+}
+#banner .right-banner {
+  width: 100%;
+  min-height: 260px;
+  position: relative;
+  padding: 50px 40px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+#banner .right-banner .banner-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3s 0s ease-out;
+}
+#banner .right-banner:hover .banner-cover {
+  transform: scale(1.05);
+}
+#banner .right-banner .banner-content {
+  display: flex;
+  flex-direction: column;
+}
+#banner .right-banner .banner-content span {
+  margin-bottom: 5px;
+  font-family: RobotoBold;
+  margin-bottom: 31px;
+}
+#banner .right-banner .banner-content a {
+  font-size: 20px;
+  font-family: RobotoBold;
+  color: #010F1C;
+  text-decoration: none;
+  transition: all 0.3s 0s ease-out;
+}
+#banner .right-banner .banner-content .button {
+  font-size: 13px;
+  font-family: Roboto;
+  font-weight: 600;
+}
+#banner .right-banner .banner-content .button img {
+  width: 13px;
+  height: 13px;
+}
+
+#deals {
+  width: 100%;
+  background-color: #ECF2F7;
+  padding-bottom: 100px;
+}
+#deals .header {
+  padding-top: 70px;
+}
+#deals .header h1 {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  font-size: 36px;
+  font-family: RobotoBold;
+}
+#deals .header img {
+  bottom: -12px;
+  left: 0;
+  z-index: -1;
+  position: absolute;
+}
+#deals .view-all {
+  padding-bottom: 50px;
+  padding-top: 70px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#deals .view-all a {
+  padding: 9px 26px 7px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: RobotoBold;
+  font-size: 14px;
+  transition: 0.3s;
+  background-color: #0989FF;
+  color: white;
+}
+#deals .view-all a img {
+  filter: invert(100%);
+}
+#deals .view-all a:hover {
+  background-color: #010F1C;
+}
+
+#product-gadget {
+  padding-top: 80px;
+}
+#product-gadget .left-side {
+  position: sticky;
+  top: 10px;
+}
+#product-gadget .left-side .electronic-gadgets {
+  width: 100%;
+  border: 3px solid #FF3494;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 37px 40px;
+  position: relative;
+}
+#product-gadget .left-side .electronic-gadgets h6 {
+  font-size: 20px;
+  padding-bottom: 8px;
+  margin-bottom: 22px;
+  font-family: RobotoBold;
+  position: relative;
+}
+#product-gadget .left-side .electronic-gadgets h6::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 150px;
+  height: 1px;
+  background-color: #0989FF;
+  bottom: 0;
+}
+#product-gadget .left-side .electronic-gadgets ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 40px;
+}
+#product-gadget .left-side .electronic-gadgets ul li a {
+  text-decoration: none;
+  color: #55585b;
+  font-size: 14px;
+  padding-left: 13px;
+  font-family: RobotoBold;
+  transition: 0.5s;
+  position: relative;
+}
+#product-gadget .left-side .electronic-gadgets ul li a::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 7px;
+  height: 3px;
+  width: 3px;
+  background-color: #55585B;
+  border-radius: 50%;
+}
+#product-gadget .left-side .electronic-gadgets ul li a:hover {
+  color: #0989FF;
+}
+#product-gadget .left-side .electronic-gadgets a {
+  font-size: 13px;
+  text-decoration: none;
+  color: #010F1C;
+  font-weight: 600;
+}
+#product-gadget .left-side .electronic-gadgets a img {
+  position: relative;
+}
+#product-gadget .left-side .electronic-gadgets img {
+  position: absolute;
+  bottom: 0;
+  right: -18px;
+}
+#product-gadget .left-side .novelty {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 100%;
+  background-image: url(../../../images/gadget-banner-1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 45px 30px 41px;
+}
+#product-gadget .left-side .novelty span {
+  font-size: 14px;
+  font-family: RobotoBold;
+  color: white;
+}
+#product-gadget .left-side .novelty a {
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 1.2;
+  color: white;
+  font-family: RobotoBold;
 }
 
 @media only screen and (max-width: 768px) {

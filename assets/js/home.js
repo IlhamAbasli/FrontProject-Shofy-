@@ -160,7 +160,7 @@ $(function () {
   
 
 
-  //#region add-to-cart
+  //#region add-to-cart&wishlist
   
   let products = [];
   let wishlist = []
@@ -207,6 +207,7 @@ $(function () {
       for (const item of wishlist) {
         if(product.getAttribute("data-id") == item.id){
           product.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.lastElementChild.firstElementChild.setAttribute("class","add-to-wishlist active-wishlist");
+
         }
       }
     }
@@ -216,7 +217,7 @@ $(function () {
   getBasketCount(products); 
   getWishlistCount(wishlist);
 
-  $("#products .product .product-action .add-to-cart").click(function(e){
+  $(".add-to-cart").click(function(e){
     e.preventDefault();
     let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
     let productImage = $(this).parent().parent().parent().prev().attr("src");
@@ -285,7 +286,7 @@ $(function () {
     getBasketCount(products);
   })
 
-  $("#products .product .product-action .add-to-wishlist").click(function(e){
+  $(".add-to-wishlist").click(function(e){
     e.preventDefault();
     let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
     let productImage = $(this).parent().parent().parent().prev().attr("src");
