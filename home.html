@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <section id="header-top">
+        <section id="header-top" class="d-none d-sm-block">
             <div class="container-main">
                 <div class="row">
                     <div class="d-none d-sm-block col-sm-6">
@@ -122,6 +122,9 @@
                                 <img src="./assets/icons/cart-icon.svg" alt="">
                                 <span class="cart-count">0</span>
                             </a>
+                            <a href="" class="bars d-sm-none">
+                                <img src="./assets/icons/bars-icon (2).svg" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -129,7 +132,7 @@
         </section>
 
 
-        <section id="header-bottom">
+        <section id="header-bottom" class="d-none d-sm-block">
             <div class="container-main">
                 <div class="row">
                     <div class="col-sm-3">
@@ -229,14 +232,51 @@
                 </div>
             </div>
         </section>
+
+        <section id="right-side-menu" class="d-block d-sm-none">
+            <div class="row">
+                <div class="col-6">
+                    <div class="logo">
+                        <img src="./assets/images/logo.svg" alt="">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="close">
+                        <div class="icon">
+                            <img src="./assets/icons/xmark.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="all-categories">
+                        <img src="./assets/icons/bars-icon.svg" alt="">
+                        <span>All Categories</span>
+                        <i class="fa-solid fa-angle-down"></i>
+
+                        <div class="categories d-none">
+                            <ul>
+                                <li><a href=""><img src="./assets/images/headphone-category.png" alt="">Headphones</a><i class="fa-solid fa-chevron-right"></i></li>
+                                <li><a href=""><img src="./assets/images/mobile-category.png" alt="">Mobile Tablets</a><i class="fa-solid fa-chevron-right"></i></li>
+                                <li><a href=""><img src="./assets/images/pc-category.png" alt="">CPU Heat Pipes</a><i class="fa-solid fa-chevron-right"></i></li>
+                                <li><a href=""><img src="./assets/images/watch-category.png" alt="">Smart Watch</a><i class="fa-solid fa-chevron-right"></i></li>
+                                <li><a href=""><img src="./assets/images/acces-category.png" alt="">Bluetooth</a><i class="fa-solid fa-chevron-right"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12"></div>
+                <div class="col-12"></div>
+                <div class="col-12"></div>
+            </div>
+        </section>
     </header>
 
     <main>
         <section id="slider-area">
             <div class="container-main">
                 <div class="row">
-                    <div class="col-6">
-                        <div class="content-area first d-none">
+                    <div class="col-12 col-sm-6">
+                        <div class="content-area first-slide active-slider">
                             <span>Starting at <b>$274</b></span>
                             <h1>The best tablet Collection 2024</h1>
                             <p>Exclusive offer <span>-35%</span> off this week<img src="./assets/icons/offer-line.svg" alt=""></p>
@@ -245,7 +285,7 @@
                             <img src="./assets/images/slider-shape-3.png" alt="" class="shape2">
                             <img src="./assets/images/slider-shape-4.png" alt="" class="shape3">
                         </div>
-                        <div class="content-area second d-none">
+                        <div class="content-area second-slide">
                             <span>Starting at <b>$999</b></span>
                             <h1>The best note book Collection 2024</h1>
                             <p>Exclusive offer <span>-10%</span> off this week<img src="./assets/icons/offer-line.svg" alt=""></p>
@@ -254,7 +294,7 @@
                             <img src="./assets/images/slider-shape-3.png" alt="" class="shape2">
                             <img src="./assets/images/slider-shape-4.png" alt="" class="shape3">
                         </div>
-                        <div class="content-area third">
+                        <div class="content-area third-slide">
                             <span>Starting at <b>$999</b></span>
                             <h1>The best tablet Collection 2024</h1>
                             <p>Exclusive offer <span>-10%</span> off this week<img src="./assets/icons/offer-line-red.svg" alt=""></p>
@@ -264,14 +304,14 @@
                             <img src="./assets/images/slider-shape-4.png" alt="" class="shape3">
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="image first d-none">
+                    <div class="col-12 col-sm-6">
+                        <div class="image first-slider-image active-slider-image">
                             <img src="./assets/images/slider-img-1.png" alt="">
                         </div>
-                        <div class="image second d-none">
+                        <div class="image second-slider-image">
                             <img src="./assets/images/slider-img-2.png" alt="">
                         </div>
-                        <div class="image third">
+                        <div class="image third-slider-image">
                             <img src="./assets/images/slider-img-3.png" alt="">
                         </div>
                     </div>
@@ -281,6 +321,65 @@
                 <a href="" class="left"><img src="./assets/icons/chevron-left.svg" alt="" ></a>
                 <a href="" class="right"><img src="./assets/icons/chevron-right.svg" alt=""></a>
             </div>
+            <div class="pagination">
+                <div class="dot first-slide-dot active-dot"></div>
+                <div class="dot second-slide-dot"></div>
+                <div class="dot third-slide-dot"></div>
+            </div>
+        </section>
+
+
+        <section id="product-categories">   
+            <div class="container-main">
+                <div class="row">
+                    <div class="col">
+                        <div class="product-category">
+                            <a href="">
+                                <img src="./assets/images/headphone-category.png" alt="">
+                            </a>
+                            <h6>Headphones</h6>
+                            <span>3 Product</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-category">
+                            <a href="">
+                                <img src="./assets/images/mobile-category.png" alt="">
+                            </a>
+                            <h6>Mobile Tablets</h6>
+                            <span>3 Product</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-category">
+                            <a href="">
+                                <img src="./assets/images/pc-category.png" alt="">
+                            </a>
+                            <h6>CPU Heat Pipes</h6>
+                            <span>2 Product</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-category">
+                            <a href="">
+                                <img src="./assets/images/watch-category.png" alt="">
+                            </a>
+                            <h6>Smart Watch</h6>
+                            <span>3 Product</span>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="product-category">
+                            <a href="">
+                                <img src="./assets/images/acces-category.png" alt="">
+                            </a>
+                            <h6>Bluetooth</h6>
+                            <span>2 Product</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </main>
 
