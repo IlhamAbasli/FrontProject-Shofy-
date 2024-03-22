@@ -1088,6 +1088,7 @@ body {
   list-style: none;
 }
 .product .image .product-action ul li a {
+  cursor: pointer;
   width: 40px;
   height: 40px;
   display: flex;
@@ -2445,9 +2446,160 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+.mini-cart {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.mini-cart .cart-mini {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1001;
+  width: 320px;
+  height: 100%;
+  padding: 0 25px;
+  background-color: white;
+}
+.mini-cart .cart-mini .header {
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #EAEBED;
+}
+.mini-cart .cart-mini .header h1 {
+  font-size: 16px;
+  margin: 0;
+  font-family: RobotoBold;
+}
+.mini-cart .cart-mini .header img {
+  cursor: pointer;
+}
+.mini-cart .cart-mini .cart-item {
+  height: calc(100vh - 380px);
+  overflow-y: scroll;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+.mini-cart .cart-mini .cart-item .mini-product {
+  padding: 20px 0;
+  border-bottom: 1px solid #EAEBED;
+}
+.mini-cart .cart-mini .cart-item .mini-product .image {
+  width: 100%;
+  border: 1px solid #EAEBED;
+  margin-right: 15px;
+}
+.mini-cart .cart-mini .cart-item .mini-product .image img {
+  width: 100%;
+}
+.mini-cart .cart-mini .cart-item .mini-product .product-details h1 {
+  font-size: 15px;
+  color: #010F1C;
+  font-family: RobotoBold;
+}
+.mini-cart .cart-mini .cart-item .mini-product .product-details .price-count .cart-mini-price {
+  font-size: 14px;
+  font-family: RobotoBold;
+  color: #0989FF;
+}
+.mini-cart .cart-mini .cart-item .mini-product .product-details .price-count .cart-mini-count {
+  font-size: 12px;
+}
+.mini-cart .cart-mini .cart-item .mini-product .remove-mark {
+  cursor: pointer;
+}
+.mini-cart .cart-mini .total-price {
+  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  align-items: center;
+}
+.mini-cart .cart-mini .total-price h1 {
+  font-size: 14px;
+  color: #010F1C;
+  margin: 0;
+  font-family: RobotoBold;
+}
+.mini-cart .cart-mini .total-price .total {
+  font-size: 15px;
+  color: #010F1C;
+  font-family: RobotoBold;
+}
+.mini-cart .cart-mini .view-cart a {
+  background-color: #010F1C;
+  color: white;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  padding: 10px 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+.mini-cart .cart-mini .view-cart a:hover {
+  background-color: #0989FF;
+}
+.mini-cart .cart-mini .checkout a {
+  border: 1.5px solid #010F1C;
+  display: block;
+  text-decoration: none;
+  color: #010F1C;
+  width: 100%;
+  padding: 10px 30px;
+  text-align: center;
+  transition: 0.3s;
+}
+.mini-cart .cart-mini .checkout a:hover {
+  background-color: #0989FF;
+  border-color: #0989FF;
+  color: white;
+}
+.mini-cart .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: #010F1C;
+  opacity: 0.7;
+}
+
+.opened-cart {
+  visibility: visible;
+}
+.opened-cart .cart-mini {
+  animation: cart-open 0.5s;
+  visibility: visible;
+}
+
+.closed-cart {
+  visibility: hidden;
+}
+.closed-cart .cart-mini {
+  transition: 0.5s;
+  transform: translateX(381px);
+}
+
+@keyframes cart-open {
+  from {
+    transform: translateX(381px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
 @media only screen and (max-width: 768px) {
   .container-main {
     width: 95%;
+  }
+  .product .modal .modal-body {
+    padding: 44px 8px 44px;
   }
   #header-mid {
     height: 65px;
@@ -2528,7 +2680,7 @@ body {
 }
 @media only screen and (min-width: 768px) and (max-width: 1440px) {
   .container-main {
-    width: 95%;
+    width: 97%;
   }
 }
 .swiper {

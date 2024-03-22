@@ -50,11 +50,7 @@ $(function () {
     let activeSliderImage = $(".active-slider-image");
     let dotActive = $(".active-dot");
 
-    if (
-      activeSlider.prev().length == 0 &&
-      activeSliderImage.prev().length == 0 &&
-      dotActive.next().length == 0
-    ) {
+    if (activeSlider.prev().length == 0 && activeSliderImage.prev().length == 0 && dotActive.prev().length == 0) {
       return;
     } else {
       activeSlider.removeClass("active-slider");
@@ -221,52 +217,67 @@ $(function () {
     }
   }
 
+  function getBasketProducts(products) {
+    let data = ""
+    products.forEach(product => {
+      data+= `                        
+      <div class="col-12">
+      <div class="mini-product">
+          <div class="row">
+              <div class="col-4">
+                  <div class="image">
+                      <a href="">
+                          <img src="${product.image}" alt="">
+                      </a>
+                  </div>
+              </div>
+              <div class="col-7">
+                  <div class="product-details">
+                      <h1>${product.name}</h1>
+                      <div class="price-count">
+                          <span class="cart-mini-price">${product.price * product.count}</span>
+                          <span class="cart-mini-count">x${product.count}</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-1">
+                  <div class="remove-mark">
+                      <img src="./assets/icons/xmark.svg" alt="" class="remove">
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div> `
+    }); 
+
+    $(".cart-mini .cart-item .mini-products").html(data);
+  }
+
+  function getTotalPrice(products){
+    let sum = 0
+    products.forEach(product => {
+      sum+= product.price * product.count
+      Math.round(sum)
+    });
+
+    $(".cart-mini .total-price .total").children().first().html(sum);
+  }
+
+  getTotalPrice(products);
   checkWishlist(wishlist);
   getBasketCount(products);
   getWishlistCount(wishlist);
+  getBasketProducts(products);
 
   $(".add-to-cart").click(function (e) {
     e.preventDefault();
-    let productId = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .attr("data-id");
+    let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
     let productImage = $(this).parent().parent().parent().prev().attr("src");
-    let productName = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .next()
-      .children()
-      .first()
-      .next()
-      .html();
-    let productPrice = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .next()
-      .children()
-      .last()
-      .children()
-      .last()
-      .children()
-      .first()
-      .html();
+    let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
+    let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
 
     if (
-      $(this)
-        .parent()
-        .parent()
-        .parent()
-        .parent()
-        .parent()
-        .hasClass("out-of-stock")
+      $(this).parent().parent().parent().parent().parent().hasClass("out-of-stock")
     ) {
       toastr["error"](`${productName} out of stock`);
       toastr.options = {
@@ -325,41 +336,16 @@ $(function () {
     };
 
     getBasketCount(products);
+    getBasketProducts(products);
+    getTotalPrice(products);
   });
 
   $(".add-to-wishlist").click(function (e) {
     e.preventDefault();
-    let productId = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .attr("data-id");
+    let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
     let productImage = $(this).parent().parent().parent().prev().attr("src");
-    let productName = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .next()
-      .children()
-      .first()
-      .next()
-      .html();
-    let productPrice = $(this)
-      .parent()
-      .parent()
-      .parent()
-      .parent()
-      .next()
-      .children()
-      .last()
-      .children()
-      .last()
-      .children()
-      .first()
-      .html();
+    let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
+    let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
 
     let existProduct = wishlist.find((m) => m.id == parseInt(productId));
 
@@ -418,6 +404,95 @@ $(function () {
     getWishlistCount(wishlist);
   });
 
+
+  $(".add-to-cart-preview").click(function(e){
+    e.preventDefault();
+    let productId = $(this).attr("data-id");
+    let productImage = $(this).parent().parent().parent().parent().parent().prev().children().first().find(".active-preview-image").children().first().attr("src");
+    let productName = $(this).parent().parent().parent().parent().find(".name").children().last().html();
+    let productPrice = $(this).parent().parent().parent().parent().find(".price").find(".new-price").children().first().html();
+    let productCount = $(this).parent().parent().children().first().find(".product-count-input").val();
+    if (
+      $(this).parent().parent().parent().parent().find(".reviews").children().first().html() == "out-of-stock"
+    ) {
+      toastr["error"](`${productName} out of stock`);
+      toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: false,
+        positionClass: "toast-top-center",
+        preventDuplicates: false,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+      };
+      return;
+    }
+
+    let existProduct = products.find((m) => m.id == parseInt(productId));
+
+    if (existProduct != undefined) {
+      existProduct.count++;
+    } else {
+      products.push({
+        id: parseInt(productId),
+        image: productImage,
+        name: productName,
+        price: parseFloat(productPrice),
+        count: parseInt(productCount),
+      });
+    }
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    toastr["success"](`${productCount} ${productName} added to cart`);
+    toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: false,
+      progressBar: false,
+      positionClass: "toast-top-center",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: "300",
+      hideDuration: "1000",
+      timeOut: "5000",
+      extendedTimeOut: "1000",
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut",
+    };
+
+    getBasketCount(products);
+    getBasketProducts(products);
+    getTotalPrice(products);
+  })
+
+
+
+  $(".count-input .plus").click(function(){
+    let inputValue = $(this).prev().val()
+    inputValue = parseInt(inputValue) + 1
+    $(this).prev().val(inputValue)
+  });
+
+  $(".count-input .minus").click(function(){
+    let inputValue = $(this).next().val()
+    if(inputValue > 1){
+      inputValue = parseInt(inputValue) - 1
+      $(this).next().val(inputValue)
+    }
+  });
+
+
   //#endregion
 
   //#region tablet-slider
@@ -451,6 +526,25 @@ $(function () {
 
   //#endregion
 
+
+  //#region cart-sidebar 
+
+  $(".cart").click(function (e) {
+    e.preventDefault();
+    $(".mini-cart").addClass("opened-cart");
+    $(".mini-cart").removeClass("closed-cart");
+  });
+
+  $(".close-mini-cart").click(function (e) {
+    e.preventDefault();
+    $(".mini-cart").removeClass("opened-cart");
+    $(".mini-cart").addClass("closed-cart");
+  });
+
+
+
+
+  //#endregion
 
 
 
