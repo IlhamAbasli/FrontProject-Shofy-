@@ -235,14 +235,14 @@ $(function () {
                   <div class="product-details">
                       <h1>${product.name}</h1>
                       <div class="price-count">
-                          <span class="cart-mini-price">${product.price * product.count}</span>
+                          <span class="cart-mini-price">$${product.price * product.count}</span>
                           <span class="cart-mini-count">x${product.count}</span>
                       </div>
                   </div>
               </div>
               <div class="col-1">
                   <div class="remove-mark">
-                      <img src="./assets/icons/xmark.svg" alt="" class="remove">
+                      <img src="./assets/icons/xmark.svg" alt="" class="remove-icon" data-id="${product.id}">
                   </div>
               </div>
           </div>
@@ -251,6 +251,35 @@ $(function () {
     }); 
 
     $(".cart-mini .cart-item .mini-products").html(data);
+    $(".mini-product .remove-icon").click(function(){
+      products = products.filter(m => m.id != $(this).attr("data-id"))
+      localStorage.setItem("products",JSON.stringify(products));
+      $(this).parent().parent().parent().parent().remove();
+  
+      getBasketProducts(products);
+      getBasketCount(products);
+      getTotalPrice(products);
+
+      toastr["error"](`${$(this).parent().parent().prev().children().first().children().first().html()} removed from cart`);
+      toastr.options = {
+        closeButton: false,
+        debug: false,
+        newestOnTop: false,
+        progressBar: false,
+        positionClass: "toast-top-center",
+        preventDuplicates: false,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+      };
+    })
+
   }
 
   function getTotalPrice(products){
@@ -493,6 +522,8 @@ $(function () {
   });
 
 
+
+
   //#endregion
 
   //#region tablet-slider
@@ -541,6 +572,11 @@ $(function () {
     $(".mini-cart").addClass("closed-cart");
   });
 
+  $(".overlay").click(function(){
+    $(".mini-cart").removeClass("opened-cart");
+    $(".mini-cart").addClass("closed-cart");
+  })
+
 
 
 
@@ -548,6 +584,78 @@ $(function () {
 
 
 
+  //#region quick-view-tabmenu
+
+  $(".first").click(function(){
+    $(this).addClass("active-image")
+    $(this).parent().parent().parent().next().find(".first-prev").addClass("active-preview-image")
+
+    $(this).parent().parent().find(".second").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".second-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".third").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".third-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".fourth").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".fourth-prev").removeClass("active-preview-image")
+  })
+
+  $(".second").click(function(){
+    $(this).addClass("active-image")
+    $(this).parent().parent().parent().next().find(".second-prev").addClass("active-preview-image")
+
+    $(this).parent().parent().find(".first").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".first-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".third").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".third-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".fourth").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".fourth-prev").removeClass("active-preview-image")
+  })
+
+  $(".third").click(function(){
+    $(this).addClass("active-image")
+    $(this).parent().parent().parent().next().find(".third-prev").addClass("active-preview-image")
+
+    $(this).parent().parent().find(".second").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".second-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".first").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".first-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".fourth").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".fourth-prev").removeClass("active-preview-image")
+    
+  })
+
+  $(".fourth").click(function(){
+    $(this).addClass("active-image")
+    $(this).parent().parent().parent().next().find(".fourth-prev").addClass("active-preview-image")
+
+    $(this).parent().parent().find(".second").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".second-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".third").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".third-prev").removeClass("active-preview-image")
+
+    $(this).parent().parent().find(".first").removeClass("active-image");
+    $(this).parent().parent().parent().next().find(".first-prev").removeClass("active-preview-image")
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //#endregion
 
 
 

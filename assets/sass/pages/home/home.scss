@@ -1042,6 +1042,7 @@ body{
             font-family: RobotoBold;
         }
     }
+    
 }
 
 .opened{
@@ -2500,7 +2501,9 @@ body{
     }
 }
 
-
+footer{
+    background-color: #F4F7F9;
+}
 #footer-top{
     padding-top: 90px;
     padding-bottom: 90px;
@@ -2825,6 +2828,9 @@ body{
         height: 100%;
         background-color: #010F1C;
         opacity: 0.7;
+        &:hover{
+            cursor: url(../../../icons/cross-out.png), pointer;
+        }
     }
 }
 

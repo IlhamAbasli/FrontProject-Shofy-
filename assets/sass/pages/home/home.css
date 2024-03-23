@@ -2280,6 +2280,10 @@ body {
   z-index: 1;
 }
 
+footer {
+  background-color: #F4F7F9;
+}
+
 #footer-top {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -2568,6 +2572,9 @@ body {
   height: 100%;
   background-color: #010F1C;
   opacity: 0.7;
+}
+.mini-cart .overlay:hover {
+  cursor: url(../../../icons/cross-out.png), pointer;
 }
 
 .opened-cart {
