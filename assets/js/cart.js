@@ -70,7 +70,7 @@ $(function(){
           getBasketProducts(products);
           getBasketCount(products);
           getTotalPrice(products);
-          checkBasket(products)
+          checkBasket(products);
     
           toastr["error"](`${$(this).parent().parent().prev().children().first().children().first().html()} removed from cart`);
           toastr.options = {
@@ -116,12 +116,42 @@ $(function(){
               </div>
           </td>
           <td class="cart-action">
-              <a href="" class="remove-prod"><i class="fa-solid fa-xmark"></i> Remove</a>
+              <a href="" class="remove-prod" data-id="${product.id}"><i class="fa-solid fa-xmark"></i> Remove</a>
           </td>
       </tr>`
         }); 
     
         $("#cart-area tbody").html(data);
+        $(".remove-prod").click(function(e){
+          e.preventDefault();
+          products = products.filter(m => m.id != $(this).attr("data-id"))
+          localStorage.setItem("products",JSON.stringify(products));
+          $(this).parent().parent().remove();
+      
+          getBasketCount(products);
+          getTotalPrice(products);
+          checkBasket(products);
+          getBasketProductsForMiniCart(products);
+
+          toastr["error"](`${$(this).parent().parent().children().first().next().children().first().html()} removed from cart`);
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-center",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+          };
+        })
       }
 
       function getBasketCount(products) {
@@ -158,11 +188,17 @@ $(function(){
 
       function checkBasket(products){
         if(products.length == 0){
-          $("#cart-area .cart").addClass("d-none");
+          $("#cart-area .cart-main").addClass("d-none");
           $("#cart-area .cart-empty-alert").removeClass("d-none");
+
+          $(".mini-cart .cart-mini-body").addClass("d-none");
+          $(".mini-cart .cart-mini-empty").removeClass("d-none");
         }else{
-          $("#cart-area .cart").removeClass("d-none");
+          $("#cart-area .cart-main").removeClass("d-none");
           $("#cart-area .cart-empty-alert").addClass("d-none");
+
+          $(".mini-cart .cart-mini-body").removeClass("d-none");
+          $(".mini-cart .cart-mini-empty").addClass("d-none");
         }
       }
 

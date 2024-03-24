@@ -158,7 +158,7 @@
                         <div class="navbar">
                             <ul>
                                 <li><a href="">Home</a></li>
-                                <li><a href="">Shop</a></li>
+                                <li><a href="shop.html">Shop</a></li>
                                 <li>
                                     <a href="" class="products-nav">Products<i class="fa-solid fa-angle-down"></i></a>
                                 </li>
@@ -335,36 +335,44 @@
 
         <div class="mini-cart closed-cart">
             <div class="cart-mini">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="header">
-                            <h1>Shopping Cart</h1>
-                            <img src="./assets/icons/xmark.svg" alt="" class="close-mini-cart">
+                <div class="cart-mini-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header">
+                                <h1>Shopping Cart</h1>
+                                <img src="./assets/icons/xmark.svg" alt="" class="close-mini-cart">
+                            </div>
                         </div>
-                    </div>
-                    <div class="cart-item">
-                        <div class="row row-gap-2 mini-products">
-                        </div>    
-                    </div>
-    
-                    <div class="col-12">
-                        <div class="total-price">
-                            <h1>Subtotal:</h1>
-                            <span class="total">$<span></span></span>
+                        <div class="cart-item">
+                            <div class="row row-gap-2 mini-products">
+                            </div>    
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="view-cart">
-                            <a href="cart.html">View Cart</a>
+        
+                        <div class="col-12">
+                            <div class="total-price">
+                                <h1>Subtotal:</h1>
+                                <span class="total">$<span></span></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="checkout">
-                            <a href="">Checkout</a>
+                        <div class="col-12">
+                            <div class="view-cart">
+                                <a href="cart.html">View Cart</a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="checkout">
+                                <a href="">Checkout</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="cart-mini-empty d-none">
+                    <img src="./assets/images/empty-cart.png" alt="">
+                    <h1>Your Cart is empty</h1>
+                    <a href="">Go to Shop</a>
+                </div>
             </div>
+
             <div class="overlay">
             </div>
         </div>
