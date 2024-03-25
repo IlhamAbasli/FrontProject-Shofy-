@@ -9,6 +9,23 @@ $(function(){
       });
 
 
+        //#region back-to-top-button
+  var btn = $("#button");
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass("show");
+    } else {
+      btn.removeClass("show");
+    }
+  });
+
+  btn.on("click", function (e) {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "300");
+  });
+
+  //#endregion
 
 
             //#region cart-sidebar
@@ -204,7 +221,7 @@ $(function(){
   $(".add-to-cart").click(function (e) {
     e.preventDefault();
     let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
-    let productImage = $(this).parent().parent().parent().prev().attr("src");
+    let productImage = $(this).parent().parent().parent().prev().children().first().attr("src");
     let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
     let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
 

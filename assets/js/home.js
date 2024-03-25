@@ -168,6 +168,7 @@ $(function () {
 
   let products = [];
   let wishlist = [];
+  let product = {};
 
   if (JSON.parse(localStorage.getItem("products")) == null) {
     localStorage.setItem("products", JSON.stringify(products));
@@ -179,6 +180,12 @@ $(function () {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   } else {
     wishlist = JSON.parse(localStorage.getItem("wishlist"));
+  }
+
+  if (JSON.parse(localStorage.getItem("product")) == null) {
+    localStorage.setItem("product", JSON.stringify(product));
+  } else {
+    product = JSON.parse(localStorage.getItem("product"));
   }
 
 
@@ -315,7 +322,7 @@ $(function () {
   $(".add-to-cart").click(function (e) {
     e.preventDefault();
     let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
-    let productImage = $(this).parent().parent().parent().prev().attr("src");
+    let productImage = $(this).parent().parent().parent().prev().children().first().attr("src");
     let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
     let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
 
@@ -387,7 +394,7 @@ $(function () {
   $(".add-to-wishlist").click(function (e) {
     e.preventDefault();
     let productId = $(this).parent().parent().parent().parent().parent().attr("data-id");
-    let productImage = $(this).parent().parent().parent().prev().attr("src");
+    let productImage = $(this).parent().parent().parent().prev().children().first().attr("src");
     let productName = $(this).parent().parent().parent().parent().next().children().first().next().html();
     let productPrice = $(this).parent().parent().parent().parent().next().children().last().children().last().children().first().html();
 
@@ -676,6 +683,38 @@ $(function () {
 
 
 
+  //#region product-detail
+
+  $(".product .image a").click(function(){
+    let productCategory = $(this).parent().next().find(".card-product-category").html();
+    let productName = $(this).parent().next().find(".product-name").html();
+    let oldPrice = $(this).parent().next().find(".old-price").html();
+    let newPrice = $(this).parent().next().find(".new-price").children().first().html();
+    let productStock = $(this).parent().next().next().find(".reviews").children().first().html();
+    let productImage1 = $(this).parent().next().next().find(".first").children().first().attr("src");
+    let productImage2 = $(this).parent().next().next().find(".second").children().first().attr("src");
+    let productImage3 = $(this).parent().next().next().find(".third").children().first().attr("src");
+    let productImage4 = $(this).parent().next().next().find(".fourth").children().first().attr("src");
+
+
+    product.category = productCategory;
+    product.name = productName;
+    product.oldPrice = oldPrice;
+    product.newPrice = newPrice;
+    product.stock = productStock;
+
+    product.image1 = productImage1;
+    product.image2 = productImage2;
+    product.image3 = productImage3;
+    product.image4 = productImage4;
+
+    localStorage.setItem("product",JSON.stringify(product));
+  })
+
+
+
+
+  //#endregion
 
 
 

@@ -381,10 +381,8 @@ body{
 
 
 
-#header-bottom{
-    .nav{
-        position: relative;
-    }
+#header-bottom{ 
+    position: relative;
     border-top: 1px solid #010f1c1a;
     height: 51px;
     .all-categories{
@@ -463,6 +461,7 @@ body{
         height: 51px;
         display: flex;
         align-items: center;
+        position: relative;
         ul{
             display: flex;
             list-style: none;
@@ -490,68 +489,7 @@ body{
 
     }
 
-    .submenu{
-        width: 100%;
-        position: absolute;
-        z-index: 6;
-        padding: 25px 40px 0;
-        font-family: Jost;
-        a{
-            text-decoration: none;
-            color: #010F1C;
-        }
-        ul{
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            flex-direction: column;
-            line-height: 34px;
-            li{
-                padding: 0;
-                margin-bottom: 9px;
-                a{
-                    text-decoration: none;
-                    font-size: 14px;
-                    color: #55585b;
-                    padding: 3px 0;
-                    transition: 0.5s;
-                    &:hover{
-                        color: #0989FF;
-                    }
-                }
-            }
-        }
-    }
 
-    .submenu-show{
-        animation: open-submenu 1s;
-        transform-origin: top;
-        display: block;
-    }
-
-    .submenu-close{
-        animation: close-submenu 1s;
-        transform-origin: top;
-    }
-
-    @keyframes open-submenu {
-        from{
-            transform: scaleY(0)
-        }
-        to{
-            transform: scaleY(1)
-        }
-    }
-
-
-    @keyframes close-submenu {
-        from{
-            transform: scaleY(1)
-        }
-        to{
-            transform: scaleY(0)
-        }
-    }
 
 
     .contact{
@@ -1152,6 +1090,7 @@ body{
         img{
             width: 100%;
             transition: 0.5s;
+            cursor: pointer;
         }
 
         .out-stock{
@@ -1281,6 +1220,10 @@ body{
             font-size: 12px;
             color: #55585b;
             padding-bottom: 3px;
+            transition: 0.3s;
+            &:hover{
+                color: #0989FF;
+            }
         }
 
         .product-name{
@@ -1288,6 +1231,10 @@ body{
             font-family: RobotoBold;
             color:#010F1C;
             padding-bottom: 7px;
+            transition: 0.3s;
+            &:hover{
+                color: #0989FF;
+            }
         }
 
         .user-ratings{
@@ -2722,6 +2669,10 @@ footer{
             }
             img{
                 cursor: pointer;
+                transition: all .3s 0s ease-out;
+                &:hover{
+                    transform: rotate(90deg);
+                }
             }
         }
         .cart-item{

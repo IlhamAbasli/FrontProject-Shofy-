@@ -248,6 +248,10 @@ body {
 }
 .mini-cart .cart-mini .header img {
   cursor: pointer;
+  transition: all 0.3s 0s ease-out;
+}
+.mini-cart .cart-mini .header img:hover {
+  transform: rotate(90deg);
 }
 .mini-cart .cart-mini .cart-item {
   height: calc(100vh - 380px);

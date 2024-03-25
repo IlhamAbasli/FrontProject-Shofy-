@@ -260,6 +260,10 @@ body{
             }
             img{
                 cursor: pointer;
+                transition: all .3s 0s ease-out;
+                &:hover{
+                    transform: rotate(90deg);
+                }
             }
         }
         .cart-item{

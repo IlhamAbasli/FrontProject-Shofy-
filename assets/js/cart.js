@@ -11,6 +11,24 @@ $(function(){
 
 
 
+        //#region back-to-top-button
+  var btn = $("#button");
+
+  $(window).scroll(function () {
+    if ($(window).scrollTop() > 300) {
+      btn.addClass("show");
+    } else {
+      btn.removeClass("show");
+    }
+  });
+
+  btn.on("click", function (e) {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "300");
+  });
+
+  //#endregion
+
       //#region cart
 
       let products = [];
@@ -151,6 +169,16 @@ $(function(){
             showMethod: "fadeIn",
             hideMethod: "fadeOut",
           };
+        })
+
+        $(".cart-clear button").click(function(e){
+          products = [];
+          localStorage.setItem("products", JSON.stringify(products));
+
+          getBasketCount(products);
+          getTotalPrice(products);
+          checkBasket(products);
+          getBasketProductsForMiniCart(products);
         })
       }
 

@@ -359,11 +359,9 @@ body {
 }
 
 #header-bottom {
+  position: relative;
   border-top: 1px solid rgba(1, 15, 28, 0.1019607843);
   height: 51px;
-}
-#header-bottom .nav {
-  position: relative;
 }
 #header-bottom .all-categories {
   position: relative;
@@ -436,6 +434,7 @@ body {
   height: 51px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 #header-bottom .navbar ul {
   display: flex;
@@ -458,63 +457,6 @@ body {
 }
 #header-bottom .navbar ul li a i {
   padding-left: 5px;
-}
-#header-bottom .submenu {
-  width: 100%;
-  position: absolute;
-  z-index: 6;
-  padding: 25px 40px 0;
-  font-family: Jost;
-}
-#header-bottom .submenu a {
-  text-decoration: none;
-  color: #010F1C;
-}
-#header-bottom .submenu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-direction: column;
-  line-height: 34px;
-}
-#header-bottom .submenu ul li {
-  padding: 0;
-  margin-bottom: 9px;
-}
-#header-bottom .submenu ul li a {
-  text-decoration: none;
-  font-size: 14px;
-  color: #55585b;
-  padding: 3px 0;
-  transition: 0.5s;
-}
-#header-bottom .submenu ul li a:hover {
-  color: #0989FF;
-}
-#header-bottom .submenu-show {
-  animation: open-submenu 1s;
-  transform-origin: top;
-  display: block;
-}
-#header-bottom .submenu-close {
-  animation: close-submenu 1s;
-  transform-origin: top;
-}
-@keyframes open-submenu {
-  from {
-    transform: scaleY(0);
-  }
-  to {
-    transform: scaleY(1);
-  }
-}
-@keyframes close-submenu {
-  from {
-    transform: scaleY(1);
-  }
-  to {
-    transform: scaleY(0);
-  }
 }
 #header-bottom .contact {
   height: 51px;
@@ -1061,6 +1003,7 @@ body {
 .product .image img {
   width: 100%;
   transition: 0.5s;
+  cursor: pointer;
 }
 .product .image .out-stock {
   position: absolute;
@@ -1172,12 +1115,20 @@ body {
   font-size: 12px;
   color: #55585b;
   padding-bottom: 3px;
+  transition: 0.3s;
+}
+.product .content .card-product-category:hover {
+  color: #0989FF;
 }
 .product .content .product-name {
   font-size: 15px;
   font-family: RobotoBold;
   color: #010F1C;
   padding-bottom: 7px;
+  transition: 0.3s;
+}
+.product .content .product-name:hover {
+  color: #0989FF;
 }
 .product .content .user-ratings i {
   font-size: 13px;
@@ -2480,6 +2431,10 @@ footer {
 }
 .mini-cart .cart-mini .header img {
   cursor: pointer;
+  transition: all 0.3s 0s ease-out;
+}
+.mini-cart .cart-mini .header img:hover {
+  transform: rotate(90deg);
 }
 .mini-cart .cart-mini .cart-item {
   height: calc(100vh - 380px);
