@@ -7,103 +7,105 @@ $(function(){
     }
 
 
-    $("#product-detail-page").html(`
-    <div class="container-main">
-    <div class="row">
-        <div class="col-12 col-lg-6 col-xl-7">
-            <div class="left-side">
-                <div class="row">
-                    <div class="col-12 col-sm-2">
-                        <div class="row">
-                            <div class="col-3 col-sm-12">
-                                <div class="product-image first active-image">
-                                    <img src="${product.image1}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-12">
-                                <div class="product-image second">
-                                    <img src="${product.image2}" alt="">
-                                </div>
-                            </div>
-                            <div class="col-3 col-sm-12">
-                                <div class="product-image third">
-                                    <img src="${product.image3}" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-10">
-                        <div class="preview-image first-prev active-preview-image">
-                            <img src="${product.image1}" alt="">
-                        </div>
-                        <div class="preview-image second-prev">
-                            <img src="${product.image2}" alt="">
-                        </div>
-                        <div class="preview-image third-prev">
-                            <img src="${product.image3}" alt="">
-                        </div>
-                        <div class="preview-image fourth-prev">
-                            <img src="${product.image4}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-5">
-            <div class="right-side">
-                <div class="name">
-                    <span>${product.category}</span>
-                    <h1>${product.name}</h1>
-                </div>
-                <div class="reviews">
-                    <span>${product.stock}</span>
-                    <div class="user-ratings">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <span>(3 review)</span>
-                    </div>
-                </div>
-                <div class="detail">
-                    <p>Jabra Evolve2 75 USB-A MS Teams Stereo Headset The Jabra Evolve2 75 USB-A MS Teams Stereo Headset</p>
-                </div>
-                <div class="price">
-                    <span class="old-price">${product.oldPrice}</span>
-                    <span class="new-price">$<span>${product.newPrice}</span></span>
-                </div>
-                <div class="color">
-                    <span>Color:</span>
-                    <div class="colors">
-                        <div class="purply-blue"></div>
-                        <div class="light-grey"></div>
-                        <div class="baby-pink"></div>
-                        <div class="bluish-cyan"></div>
-                    </div>
-                </div>
-                <div class="actions">
-                    <span>Quantity</span>
-                    <div class="row">
-                        <div class="col-4 col-sm-3 col-lg-5 col-xl-3">
-                            <div class="count-input">
-                                <span class="minus"><img src="./assets/icons/minus.svg" alt=""></span>
-                                <input type="text" class="product-count-input" value="1" disabled>
-                                <span class="plus"><img src="./assets/icons/plus.svg" alt=""></span>
-                            </div>
-                        </div>
-                        <div class="col-8 col-sm-9 col-lg-7 col-xl-9">
-                            <a href="" class="add-to-cart-preview" data-id="11">Add to cart</a>
-                        </div>
-                        <div class="col-12">
-                            <a href="" class="buy-now">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>`)
+    if(JSON.parse(localStorage.getItem("product")) != null){
+      $("#product-detail-page").html(`
+      <div class="container-main">
+      <div class="row">
+          <div class="col-12 col-lg-6 col-xl-7">
+              <div class="left-side">
+                  <div class="row">
+                      <div class="col-12 col-sm-2">
+                          <div class="row">
+                              <div class="col-3 col-sm-12">
+                                  <div class="product-image first active-image">
+                                      <img src="${product.image1}" alt="">
+                                  </div>
+                              </div>
+                              <div class="col-3 col-sm-12">
+                                  <div class="product-image second">
+                                      <img src="${product.image2}" alt="">
+                                  </div>
+                              </div>
+                              <div class="col-3 col-sm-12">
+                                  <div class="product-image third">
+                                      <img src="${product.image3}" alt="">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-12 col-sm-10">
+                          <div class="preview-image first-prev active-preview-image">
+                              <img src="${product.image1}" alt="">
+                          </div>
+                          <div class="preview-image second-prev">
+                              <img src="${product.image2}" alt="">
+                          </div>
+                          <div class="preview-image third-prev">
+                              <img src="${product.image3}" alt="">
+                          </div>
+                          <div class="preview-image fourth-prev">
+                              <img src="${product.image4}" alt="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-lg-6 col-xl-5">
+              <div class="right-side">
+                  <div class="name">
+                      <span>${product.category}</span>
+                      <h1>${product.name}</h1>
+                  </div>
+                  <div class="reviews">
+                      <span>${product.stock}</span>
+                      <div class="user-ratings">
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <i class="fa-solid fa-star"></i>
+                          <span>(3 review)</span>
+                      </div>
+                  </div>
+                  <div class="detail">
+                      <p>Jabra Evolve2 75 USB-A MS Teams Stereo Headset The Jabra Evolve2 75 USB-A MS Teams Stereo Headset</p>
+                  </div>
+                  <div class="price">
+                      <span class="old-price">${product.oldPrice}</span>
+                      <span class="new-price">$<span>${product.newPrice}</span></span>
+                  </div>
+                  <div class="color">
+                      <span>Color:</span>
+                      <div class="colors">
+                          <div class="purply-blue"></div>
+                          <div class="light-grey"></div>
+                          <div class="baby-pink"></div>
+                          <div class="bluish-cyan"></div>
+                      </div>
+                  </div>
+                  <div class="actions">
+                      <span>Quantity</span>
+                      <div class="row">
+                          <div class="col-4 col-sm-3 col-lg-5 col-xl-3">
+                              <div class="count-input">
+                                  <span class="minus"><img src="./assets/icons/minus.svg" alt=""></span>
+                                  <input type="text" class="product-count-input" value="1" disabled>
+                                  <span class="plus"><img src="./assets/icons/plus.svg" alt=""></span>
+                              </div>
+                          </div>
+                          <div class="col-8 col-sm-9 col-lg-7 col-xl-9">
+                              <a href="" class="add-to-cart-preview" data-id="11">Add to cart</a>
+                          </div>
+                          <div class="col-12">
+                              <a href="" class="buy-now">Buy Now</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>`)
+    }
 
 
 $(".right-side li .content").click(function () {
