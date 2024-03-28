@@ -1111,6 +1111,12 @@ footer {
     top: -142px;
     right: 158px;
   }
+  #contact-form-area .contact-content {
+    padding: 20px 25px 49px;
+  }
+  #contact-form-area .contact-content .form-area {
+    margin: 0;
+  }
 }
 @media only screen and (max-width: 600px) {
   #tablet-collection .tablet-slider {

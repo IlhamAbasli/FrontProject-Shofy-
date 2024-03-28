@@ -272,13 +272,13 @@ $(function () {
     $(".cart-mini .cart-item .mini-products").html(data);
     $(".mini-product .remove-icon").click(function(){
       products = products.filter(m => m.id != $(this).attr("data-id"))
-      localStorage.setItem("products",JSON.stringify(products));
       $(this).parent().parent().parent().parent().remove();
   
-      getBasketProducts(products);
       getBasketCount(products);
       getTotalPrice(products);
-      checkBasket(products)
+      checkBasket(products);
+
+      localStorage.setItem("products",JSON.stringify(products));
 
       toastr["error"](`${$(this).parent().parent().prev().children().first().children().first().html()} removed from cart`);
       toastr.options = {
@@ -306,13 +306,13 @@ $(function () {
     let sum = 0
     products.forEach(product => {
       sum+= product.price * product.count
-      Math.round(sum)
+      Math.round(sum);
     });
 
     $(".cart-mini .total-price .total").children().first().html(sum);
   }
 
-  checkBasket(products)
+  checkBasket(products);
   getTotalPrice(products);
   checkWishlist(wishlist);
   getBasketCount(products);

@@ -128,9 +128,9 @@ $(function(){
           </td>
           <td class="cart-quantity">
               <div class="quantity-input">
-                  <span class="minus"><img src="./assets/icons/minus.svg" alt=""></span>
+                  <span class="minus" data-id="${product.id}"><img src="./assets/icons/minus.svg" alt=""></span>
                   <input type="text" value="${product.count}" disabled>
-                  <span class="plus"><img src="./assets/icons/plus.svg" alt=""></span>
+                  <span class="plus" data-id="${product.id}"><img src="./assets/icons/plus.svg" alt=""></span>
               </div>
           </td>
           <td class="cart-action">
@@ -180,6 +180,77 @@ $(function(){
           checkBasket(products);
           getBasketProductsForMiniCart(products);
         })
+
+
+
+        $(".plus").click(function(){
+          let existProduct = products.find(m => m.id == parseInt($(this).attr("data-id")))
+          existProduct.count++;
+          $(this).prev().val(existProduct.count);
+          getBasketCount(products);
+          getTotalPrice(products);
+          checkBasket(products);
+          getBasketProductsForMiniCart(products);
+
+          localStorage.setItem("products",JSON.stringify(products))
+
+          toastr["success"](`1 ${$(this).parent().parent().prev().prev().children().first().html()} added to cart`);
+          toastr.options = {
+            closeButton: false,
+            debug: false,
+            newestOnTop: false,
+            progressBar: false,
+            positionClass: "toast-top-center",
+            preventDuplicates: false,
+            onclick: null,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+          };
+        })
+
+
+        $(".minus").click(function(){
+          let existProduct = products.find(m => m.id == parseInt($(this).attr("data-id")))
+          if(existProduct.count > 1){
+            existProduct.count--;
+            $(this).next().val(existProduct.count);
+            getBasketCount(products);
+            getTotalPrice(products);
+            checkBasket(products);
+            getBasketProductsForMiniCart(products);
+  
+            localStorage.setItem("products",JSON.stringify(products))
+
+            toastr["info"](`The number of products was reduced for ${$(this).parent().parent().prev().prev().children().first().html()}`);
+            toastr.options = {
+              closeButton: false,
+              debug: false,
+              newestOnTop: false,
+              progressBar: false,
+              positionClass: "toast-top-center",
+              preventDuplicates: false,
+              onclick: null,
+              showDuration: "300",
+              hideDuration: "1000",
+              timeOut: "5000",
+              extendedTimeOut: "1000",
+              showEasing: "swing",
+              hideEasing: "linear",
+              showMethod: "fadeIn",
+              hideMethod: "fadeOut",
+            };
+          }else{
+            return;
+          }
+        })
+
+
       }
 
       function getBasketCount(products) {

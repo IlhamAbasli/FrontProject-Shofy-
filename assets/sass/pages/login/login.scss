@@ -1326,4 +1326,61 @@ footer{
     .container-main{
         width: 97%;
     }
+    #login-area{
+        .login-shape{
+            img{
+                position: absolute;
+            }
+            .shape1{
+                top: 7%;
+                left: 15%;
+            }
+    
+            .shape2{
+                bottom: 38%;
+                left: 19%;
+            }
+    
+            .shape3{
+                top: 7%;
+                right: 22%;
+            }
+    
+            .shape4{
+                bottom: 27%;
+                right: 12%;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    #login-area{
+        .login-shape{
+            img{
+                position: absolute;
+            }
+            .shape1{
+                top: 7%;
+                left: 3%;
+            }
+    
+            .shape2{
+                bottom: 38%;
+                left: 10%;
+            }
+    
+            .shape3{
+                top: 7%;
+                right: 10%;
+            }
+    
+            .shape4{
+                bottom: 27%;
+                right: -3%;
+            }
+        }
+    }
 }

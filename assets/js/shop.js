@@ -8,6 +8,11 @@ $(function(){
         $(".categories").toggleClass("d-none");
       });
 
+      $("#shop-area .selector").click(function () {
+        $(this).children().first().toggleClass("rotate");
+        $(this).next().toggleClass("menu-down");
+        $(this).parent().siblings().find(".menu").removeClass("menu-down");
+      });
 
         //#region back-to-top-button
   var btn = $("#button");
