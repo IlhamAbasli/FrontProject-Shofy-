@@ -14,16 +14,6 @@ $(function () {
     $(".categories").toggleClass("d-none");
   });
 
-  $(".products-nav").mouseenter(function () {
-    $(".submenu").addClass("submenu-show");
-    $(".submenu").removeClass("submenu-close");
-  });
-
-  $(".products-nav").mouseleave(function () {
-    $(".submenu").removeClass("submenu-show");
-    $(".submenu").addClass("submenu-close");
-  });
-
   //#region back-to-top-button
   var btn = $("#button");
 
@@ -41,6 +31,20 @@ $(function () {
   });
 
   //#endregion
+
+
+
+    //#region header-sticky
+    var headerSticky = $("#header-sticky");
+
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 200) {
+        headerSticky.addClass("show");
+      } else {
+        headerSticky.removeClass("show");
+      }
+    });
+    //#endregion
 
   //#region slider-area
 
@@ -209,6 +213,7 @@ $(function () {
     }
 
     $("#header-mid .actions .cart-count").html(count);
+    $("#header-sticky .actions .cart-count").html(count);
   }
 
   function getWishlistCount(products) {
@@ -220,6 +225,7 @@ $(function () {
     }
 
     $("#header-mid .actions .wishlist-count").html(count);
+    $("#header-sticky .actions .wishlist-count").html(count);
   }
 
   function checkWishlist(wishlist) {
@@ -277,6 +283,8 @@ $(function () {
       getBasketCount(products);
       getTotalPrice(products);
       checkBasket(products);
+      getBasketProducts(products);
+
 
       localStorage.setItem("products",JSON.stringify(products));
 

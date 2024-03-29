@@ -618,6 +618,66 @@ body{
                         padding-top: 3px;
                     }
                 }
+                .mega-menu{
+                    font-family: Jost;
+                    position: absolute;
+                    top: 69px;
+                    box-shadow: 0 20px 30px #010f1c1a;
+                    left: -220px;
+                    right: 0;
+                    width: 1294px;
+                    background-color: white;
+                    box-shadow: 0 20px 30px #010f1c1a;
+                    z-index: 9;
+                    padding: 25px 40px 0;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition-duration: .1s;
+                    transform-origin: top;
+                    transform: perspective(300px) rotateX(-18deg);
+                    .has-dropdown{
+                        margin-bottom: 35px;
+                        width: 25%;
+                        .mega-menu-title{
+                            font-size: 16px;
+                            color: black;
+                            display: block;
+                            margin-bottom: 7px;
+                            font-weight: 400;
+                            transition: 0.3s;
+                            padding: 3px 0;
+                            &:hover{
+                                color: #0989FF;
+                            }
+                        }
+                        .submenu{
+                            flex-direction: column;
+                            gap: 0;
+                            li{
+                                margin-bottom: 9px;
+                                padding: 0;
+                                a{
+                                    font-weight: 400;
+                                    font-size: 14px;
+                                    color: #55585B;
+                                    transition: 0.3s;
+                                    &:hover{
+                                        color: #0989FF;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:hover{
+                    .mega-menu{
+                        visibility: visible;
+                        opacity: 1;
+                        transition-duration: .2s;
+                        transform: perspective(300px) rotateX(0);
+                    }
+                }
             }
         }
 
@@ -1418,5 +1478,16 @@ footer{
 @media only screen and (min-width: 768px) and (max-width: 1440px){
     .container-main{
         width: 97%;
+    }
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    #header-bottom{
+        .mega-menu{
+            left: -255px !important;
+            width: 993px !important;
+        }
     }
 }
